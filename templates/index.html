@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Used Car Price Predictor</h1>
+    
+        <form action="/predict" method="POST">
+            
+            <label for="name">Car Model</label>
+            <select name="name" id="name" required>
+            
+  <option value="Audi A3 Cabriolet">Audi A3 Cabriolet</option>
+<option value="Audi A4 1.8">Audi A4 1.8</option>
+<option value="Audi A4 2.0">Audi A4 2.0</option>
+<option value="Audi A6 2.0">Audi A6 2.0</option>
+<option value="Audi A8">Audi A8</option>
+<option value="Audi Q3 2.0">Audi Q3 2.0</option>
+<option value="Audi Q5 2.0">Audi Q5 2.0</option>
+<option value="Audi Q7">Audi Q7</option>
+<option value="BMW 3 Series">BMW 3 Series</option>
+<option value="BMW 5 Series">BMW 5 Series</option>
+<option value="BMW 7 Series">BMW 7 Series</option>
+<option value="BMW X1">BMW X1</option>
+<option value="BMW X1 sDrive20d">BMW X1 sDrive20d</option>
+<option value="BMW X1 xDrive20d">BMW X1 xDrive20d</option>
+<option value="Chevrolet Beat">Chevrolet Beat</option>
+<option value="Chevrolet Beat Diesel">Chevrolet Beat Diesel</option>
+<option value="Chevrolet Beat LS">Chevrolet Beat LS</option>
+<option value="Chevrolet Beat LT">Chevrolet Beat LT</option>
+<option value="Chevrolet Beat PS">Chevrolet Beat PS</option>
+<!-- and so on... -->
+
+  
+
+            </select>
+        
+        
+            <label for="company">Company</label>
+            <select name="company" id="company" required>
+            <option value="Audi">Audi</option>
+<option value="BMW">BMW</option>
+<option value="Chevrolet">Chevrolet</option>
+<option value="Datsun">Datsun</option>
+<option value="Fiat">Fiat</option>
+<option value="Force">Force</option>
+<option value="Ford">
+
+            </select>
+        
+        
+            <label for="year">Year</label>
+            <select name="year" id="year" required>
+                <option value="2019">2019</option>
+<option value="2018">2018</option>
+<option value="2017">2017</option>
+<option value="2016">2016</option>
+<option value="2015">2015</option>
+<option value="2014">2014</option>
+<option value="2013">2013</option>
+<option value="2012">2012</option>
+<option value="2011">2011</option>
+<option value="2010">2010</option>
+<option value="2009">2009</option>
+<option value="2008">2008</option>
+<option value="2007">2007</option>
+<option value="2006">2006</option>
+<option value="2005">2005</option>
+<option value="2004">2004</option>
+<option value="2003">2003</option>
+<option value="2002">2002</option>
+<option value="2001">2001</option>
+<option value="2000">2000</option>
+<option value="1995">1995</option>
+
+            </select>
+        
+        
+            <label for="kms_driven">Kilometers Driven</label>
+            <input type="number" name="kms_driven" id="kms_driven" required>
+        
+
+    
+            <label for="fuel_type">Fuel Type</label>
+            <select name="fuel_type" id="fuel_type" required>
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="CNG">CNG</option>
+                <option value="Electric">Electric</option>
+            </select>
+        
+        
+            <button type="submit">Predict Price</button>
+    
+        </form>
+    
+        {% if prediction_text %}
+            <div class="result">
+                <h2>{{ prediction_text }}</h2>
+            
+        {% endif %}
+    </div>
+</body>
+<style>
+    body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input, select {
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.result {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 18px;
+    color: green;
+}
+
+</style>
+</html>
